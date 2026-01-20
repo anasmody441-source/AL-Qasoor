@@ -113,30 +113,6 @@ code {
         border-left-style: inherit;
         border-right-style: inherit;
         border-top-style: inherit;
-/* Custom utility classes for restaurant colors */
-@layer utilities {
-  .bg-charcoal {
-    background-color: var(--charcoal);
-  }
-  .bg-charcoal-light {
-    background-color: var(--charcoal-light);
-  }
-  .bg-charcoal-dark {
-    background-color: var(--charcoal-dark);
-  }
-  .text-golden {
-    color: var(--golden);
-  }
-  .bg-golden {
-    background-color: var(--golden);
-  }
-  .text-cream {
-    color: var(--cream);
-  }
-  .border-golden {
-    border-color: var(--golden);
-  }
-}
         border-bottom-style: inherit;
         border-left-color: inherit;
         border-right-color: inherit;
