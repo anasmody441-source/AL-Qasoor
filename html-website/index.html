@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broasted Al-Qasoor | بروستد القصور</title>
+    <meta name="description" content="Authentic Broasted Chicken - الطعم الأصيل للبروستد">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo" data-en="Broasted Al-Qasoor" data-ar="بروستد القصور">
+                    Broasted Al-Qasoor
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#hero" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="#about" class="nav-link" data-en="About" data-ar="من نحن">About</a>
+                    <a href="#menu" class="nav-link" data-en="Menu" data-ar="القائمة">Menu</a>
+                    <a href="#reviews" class="nav-link" data-en="Reviews" data-ar="التقييمات">Reviews</a>
+                    <a href="#gallery" class="nav-link" data-en="Gallery" data-ar="المعرض">Gallery</a>
+                    <a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="header-actions">
+                    <button class="btn-icon" id="langToggle" aria-label="Toggle Language">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <button class="btn-icon" id="cartToggle" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                    <button class="btn-icon mobile-menu-toggle" id="mobileMenuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile" id="navMobile">
+                <a href="#hero" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-ar="من نحن">About</a>
+                <a href="#menu" class="nav-link" data-en="Menu" data-ar="القائمة">Menu</a>
+                <a href="#reviews" class="nav-link" data-en="Reviews" data-ar="التقييمات">Reviews</a>
+                <a href="#gallery" class="nav-link" data-en="Gallery" data-ar="المعرض">Gallery</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <!-- Rating Badge -->
+                <div class="rating-badge">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-text" data-en="4.2 (85 reviews)" data-ar="4.2 (85 تقييم)">4.2 (85 reviews)</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="hero-title">
+                    <span class="title-highlight" data-en="Authentic Broasted" data-ar="الطعم الأصيل">Authentic Broasted</span>
+                    <br>
+                    <span data-en="Done Right" data-ar="للبروستد">Done Right</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="hero-description" data-en="Fresh, delicious broasted chicken served with premium ingredients and competitive prices" data-ar="دجاج بروستد طازج ولذيذ يقدم مع مكونات عالية الجودة وأسعار منافسة">
+                    Fresh, delicious broasted chicken served with premium ingredients and competitive prices
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary" data-en="View Menu" data-ar="شاهد القائمة">View Menu</a>
+                    <a href="#contact" class="btn btn-secondary" data-en="Order Takeaway" data-ar="اطلب الآن">Order Takeaway</a>
+                </div>
+
+                <!-- Status Badge -->
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span data-en="Open Now - Closes at 12:00 AM" data-ar="مفتوح الآن - يغلق عند 12:00 صباحاً">Open Now - Closes at 12:00 AM</span>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="About Us" data-ar="من نحن">About Us</h2>
+                <div class="title-underline"></div>
+                <p class="section-description" data-en="Broasted Al-Qasoor is your go-to destination for the most delicious and flavorful broasted chicken in the area. We pride ourselves on serving fresh, tasty dishes while maintaining the highest standards of quality and cleanliness. Our beloved local restaurant offers a diverse range of appetizing dishes at reasonable prices, making it the perfect choice for families and friends." data-ar="بروستد القصور هو وجهتك المفضلة للحصول على ألذ وأطيب دجاج بروستد في المنطقة. نحن نفتخر بتقديم أطباق طازجة ولذيذة مع الحفاظ على أعلى معايير الجودة والنظافة. مطعمنا المحلي المحبوب يقدم مجموعة متنوعة من الأطباق الشهية بأسعار معقولة، مما يجعله الخيار الأمثل للعائلات والأصدقاء.">
+                    Broasted Al-Qasoor is your go-to destination for the most delicious and flavorful broasted chicken in the area. We pride ourselves on serving fresh, tasty dishes while maintaining the highest standards of quality and cleanliness. Our beloved local restaurant offers a diverse range of appetizing dishes at reasonable prices, making it the perfect choice for families and friends.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title" data-en="Premium Quality" data-ar="جودة عالية">Premium Quality</h3>
+                    <p class="feature-description" data-en="Fresh ingredients daily" data-ar="مكونات طازجة يومياً">Fresh ingredients daily</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title" data-en="Fast Service" data-ar="خدمة سريعة">Fast Service</h3>
+                    <p class="feature-description" data-en="Your order ready in minutes" data-ar="طلبك جاهز في دقائق">Your order ready in minutes</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="feature-title" data-en="Great Value" data-ar="أسعار مناسبة">Great Value</h3>
+                    <p class="feature-description" data-en="Competitive prices for all" data-ar="أسعار تنافسية للجميع">Competitive prices for all</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title" data-en="Family Friendly" data-ar="عائلي">Family Friendly</h3>
+                    <p class="feature-description" data-en="Perfect for families" data-ar="مكان مثالي للعائلات">Perfect for families</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Our Menu" data-ar="قائمة الطعام">Our Menu</h2>
+                <div class="title-underline"></div>
+                <p class="section-description" data-en="Discover our delicious dishes" data-ar="اكتشف أطباقنا اللذيذة">Discover our delicious dishes</p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all" data-en="All Items" data-ar="جميع الأصناف">All Items</button>
+                <button class="category-btn" data-category="broasted" data-en="Broasted" data-ar="بروستد">Broasted</button>
+                <button class="category-btn" data-category="roasted" data-en="Roasted" data-ar="مشوي">Roasted</button>
+                <button class="category-btn" data-category="appetizers" data-en="Appetizers" data-ar="المقبلات">Appetizers</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Customer Reviews" data-ar="آراء العملاء">Customer Reviews</h2>
+                <div class="title-underline"></div>
+                <div class="overall-rating">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-number">4.2</span>
+                    <span class="review-count" data-en="(85 reviews)" data-ar="(85 تقييم)">(85 reviews)</span>
+                </div>
+            </div>
+
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Reviews will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Gallery" data-ar="معرض الصور">Gallery</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery images will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Popular Times -->
+            <div class="popular-times">
+                <h3 class="popular-times-title" data-en="Popular Times" data-ar="أوقات الذروة">Popular Times</h3>
+                <div class="times-grid" id="timesGrid">
+                    <!-- Times will be inserted here by JavaScript -->
+                </div>
+                <p class="times-note" data-en="Peak hours are usually between 6 PM and 12 AM" data-ar="أوقات الذروة تتراوح عادة بين 6 مساءً و 12 صباحاً">Peak hours are usually between 6 PM and 12 AM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 class="info-title" data-en="Phone" data-ar="الهاتف">Phone</h3>
+                            <a href="tel:+966123456789" class="info-link">+966 12 345 6789</a>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="info-title" data-en="Address" data-ar="العنوان">Address</h3>
+                            <p class="info-text" data-en="Al-Qasoor District, Riyadh, Saudi Arabia" data-ar="حي القصور، الرياض، المملكة العربية السعودية">Al-Qasoor District, Riyadh, Saudi Arabia</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3 class="info-title" data-en="Hours" data-ar="ساعات العمل">Hours</h3>
+                            <p class="info-text" data-en="Daily until 12:00 AM" data-ar="يومياً حتى 12:00 صباحاً">Daily until 12:00 AM</p>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.8583447192823!2d46.738586!3d24.713552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzQ4LjgiTiA0NsKwNDQnMTguOSJF!5e0!3m2!1sen!2ssa!4v1234567890"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label data-en="Name" data-ar="الاسم">Name</label>
+                            <input type="text" name="name" required placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label data-en="Phone" data-ar="رقم الهاتف">Phone</label>
+                            <input type="tel" name="phone" required placeholder="Enter your phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label data-en="Message" data-ar="الرسالة">Message</label>
+                            <textarea name="message" rows="5" required placeholder="Write your message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Send Message" data-ar="إرسال">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title" data-en="Broasted Al-Qasoor" data-ar="بروستد القصور">Broasted Al-Qasoor</h3>
+                    <p class="footer-text" data-en="The Best Broasted in Town" data-ar="أفضل بروستد في المنطقة">The Best Broasted in Town</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#menu" data-en="Menu" data-ar="القائمة">Menu</a></li>
+                        <li><a href="#about" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                        <li><a href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading" data-en="Connect With Us" data-ar="تواصل معنا">Connect With Us</h4>
+                    <div class="footer-contact">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+966123456789">+966 12 345 6789</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> <span data-en="Broasted Al-Qasoor" data-ar="بروستد القصور">Broasted Al-Qasoor</span>. <span data-en="All rights reserved" data-ar="جميع الحقوق محفوظة">All rights reserved</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">
+                <i class="fas fa-shopping-bag"></i>
+                <span data-en="Shopping Cart" data-ar="سلة التسوق">Shopping Cart</span>
+            </h3>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cart-body" id="cartBody">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-bag"></i>
+                <p data-en="Your cart is empty" data-ar="السلة فارغة">Your cart is empty</p>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+        </div>
+
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span data-en="Total" data-ar="الإجمالي">Total</span>
+                <span class="total-amount" id="totalAmount">0.00 SAR</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn" data-en="Checkout" data-ar="إتمام الطلب">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
