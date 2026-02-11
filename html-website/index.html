@@ -382,6 +382,143 @@
     <!-- Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay"></div>
 
+    <!-- Product Details Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-overlay" id="checkoutModalOverlay"></div>
+        <div class="modal-content modal-lg">
+            <button class="modal-close" id="checkoutModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <h2 class="modal-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span data-en="Complete Your Order" data-ar="أكمل طلبك">Complete Your Order</span>
+                </h2>
+
+                <form id="orderForm" class="order-form">
+                    <!-- Customer Info -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-en="Customer Information" data-ar="معلومات العميل">Customer Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
+                                <input type="text" name="customerName" required placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
+                                <input type="tel" name="customerPhone" required placeholder="+966 5XX XXX XXX">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-en="Delivery Address *" data-ar="عنوان التوصيل *">Delivery Address *</label>
+                            <textarea name="customerAddress" rows="3" required placeholder="Enter full delivery address"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-en="Order Notes (Optional)" data-ar="ملاحظات الطلب (اختياري)">Order Notes (Optional)</label>
+                            <textarea name="orderNotes" rows="2" placeholder="Any special requests?"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-en="Order Summary" data-ar="ملخص الطلب">Order Summary</h3>
+                        <div id="orderSummary" class="order-summary">
+                            <!-- Order items will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-en="Payment Method" data-ar="طريقة الدفع">Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="cash" checked>
+                                <div class="payment-option-content">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span data-en="Cash on Delivery" data-ar="الدفع عند الاستلام">Cash on Delivery</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="order-total">
+                        <span data-en="Total Amount:" data-ar="المبلغ الإجمالي:">Total Amount:</span>
+                        <span class="total-price" id="orderTotalPrice">0.00 SAR</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Confirm Order" data-ar="تأكيد الطلب">Confirm Order</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-sm">
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="confirmation-title" data-en="Order Placed Successfully!" data-ar="تم تقديم الطلب بنجاح!">Order Placed Successfully!</h2>
+                <p class="confirmation-text" data-en="Your order has been received. We'll contact you shortly." data-ar="تم استلام طلبك. سنتواصل معك قريباً.">Your order has been received. We'll contact you shortly.</p>
+                <div class="order-number">
+                    <span data-en="Order Number:" data-ar="رقم الطلب:">Order Number:</span>
+                    <strong id="confirmationOrderNumber">#0000</strong>
+                </div>
+                <div class="confirmation-actions">
+                    <button class="btn btn-primary" id="viewOrdersBtn" data-en="View My Orders" data-ar="عرض طلباتي">View My Orders</button>
+                    <button class="btn btn-secondary" id="continueShoppingBtn" data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Orders Modal -->
+    <div class="modal" id="ordersModal">
+        <div class="modal-overlay" id="ordersModalOverlay"></div>
+        <div class="modal-content modal-xl">
+            <button class="modal-close" id="ordersModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <h2 class="modal-title">
+                    <i class="fas fa-receipt"></i>
+                    <span data-en="My Orders" data-ar="طلباتي">My Orders</span>
+                </h2>
+                <div id="ordersContainer" class="orders-container">
+                    <!-- Orders will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Orders Button (Fixed) -->
+    <button class="view-orders-fab" id="viewOrdersFab" title="My Orders">
+        <i class="fas fa-receipt"></i>
+        <span class="orders-count" id="ordersCount">0</span>
+    </button>
+
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
