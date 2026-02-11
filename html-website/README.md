@@ -113,6 +113,44 @@ http-server
 
 ## 🎯 التخصيص
 
+### إدارة الطلبات:
+جميع الطلبات محفوظة في `localStorage` تحت مفتاح `orders`. كل طلب يحتوي على:
+```javascript
+{
+    id: 'ORD-1234567890',
+    orderNumber: '#ABC123',
+    customer: {
+        name: 'اسم العميل',
+        phone: '+966 XXX XXX XXX',
+        address: 'العنوان الكامل'
+    },
+    items: [
+        {
+            id: '1',
+            name: 'اسم المنتج',
+            quantity: 2,
+            price: 25.00,
+            total: 50.00
+        }
+    ],
+    total: 50.00,
+    status: 'pending',
+    date: '2025-02-05T...',
+    dateFormatted: 'التاريخ المنسق'
+}
+```
+
+### عرض الطلبات:
+- اضغط على الزر العائم (FAB) في أسفل الشاشة
+- أو افتح console واكتب:
+```javascript
+// عرض جميع الطلبات
+console.log(JSON.parse(localStorage.getItem('orders')));
+
+// حذف جميع الطلبات (للتجربة)
+localStorage.removeItem('orders');
+```
+
 ### تغيير الألوان:
 افتح `styles.css` وعدّل المتغيرات في البداية:
 ```css
