@@ -485,6 +485,280 @@ function handleContactSubmit(e) {
     e.target.reset();
 }
 
+// ==================== PRODUCT DETAILS MODAL ====================
+let selectedProductQuantity = 1;
+
+function showProductDetails(itemId) {
+    const item = menuItems.find(i => i.id === itemId);
+    if (!item) return;
+
+    selectedProductQuantity = 1;
+    const modal = document.getElementById('productModal');
+    const modalBody = document.getElementById('modalBody');
+
+    modalBody.innerHTML = `
+        <div class="product-modal-image">
+            <img src="${item.image}" alt="${currentLanguage === 'ar' ? item.nameAr : item.name}">
+        </div>
+        ${item.popular ? `<span class="product-modal-category">${currentLanguage === 'ar' ? 'مميز' : 'Popular'}</span>` : ''}
+        <h2 class="product-modal-title">${currentLanguage === 'ar' ? item.nameAr : item.name}</h2>
+        <p class="product-modal-description">${currentLanguage === 'ar' ? item.descriptionAr : item.description}</p>
+        <div class="product-modal-price">${item.price.toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}</div>
+        <div class="product-modal-quantity">
+            <label>${currentLanguage === 'ar' ? 'الكمية:' : 'Quantity:'}</label>
+            <div class="quantity-selector">
+                <button type="button" onclick="changeProductQuantity(-1)">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <span id="productQuantity">1</span>
+                <button type="button" onclick="changeProductQuantity(1)">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block btn-lg" onclick="addProductToCart('${item.id}')">
+            <i class="fas fa-shopping-cart"></i>
+            ${currentLanguage === 'ar' ? 'إضافة إلى السلة' : 'Add to Cart'}
+        </button>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function changeProductQuantity(change) {
+    selectedProductQuantity = Math.max(1, selectedProductQuantity + change);
+    document.getElementById('productQuantity').textContent = selectedProductQuantity;
+}
+
+function addProductToCart(itemId) {
+    const item = menuItems.find(i => i.id === itemId);
+    if (!item) return;
+
+    const existingItem = cart.find(i => i.id === itemId);
+    if (existingItem) {
+        existingItem.quantity += selectedProductQuantity;
+    } else {
+        cart.push({ ...item, quantity: selectedProductQuantity });
+    }
+
+    saveCart();
+    updateCartUI();
+    closeModal('productModal');
+    showToast(currentLanguage === 'ar' ? 'تمت الإضافة إلى السلة!' : 'Added to cart!', 'success');
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ==================== CHECKOUT & ORDERS ====================
+function handleCheckout() {
+    if (cart.length === 0) {
+        showToast(currentLanguage === 'ar' ? 'السلة فارغة' : 'Cart is empty', 'error');
+        return;
+    }
+
+    // Populate order summary
+    const orderSummary = document.getElementById('orderSummary');
+    orderSummary.innerHTML = cart.map(item => `
+        <div class="order-summary-item">
+            <div class="order-summary-item-info">
+                <div class="order-summary-item-name">${currentLanguage === 'ar' ? item.nameAr : item.name}</div>
+                <div class="order-summary-item-quantity">${currentLanguage === 'ar' ? 'الكمية' : 'Qty'}: ${item.quantity}</div>
+            </div>
+            <div class="order-summary-item-price">${(item.price * item.quantity).toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}</div>
+        </div>
+    `).join('');
+
+    // Update total
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById('orderTotalPrice').textContent = `${total.toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}`;
+
+    // Show checkout modal
+    closeCart();
+    document.getElementById('checkoutModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ==================== ORDER SUBMISSION ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing initialization code ...
+    
+    // Order form submission
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+        orderForm.addEventListener('submit', handleOrderSubmit);
+    }
+
+    // Modal close handlers
+    ['modalClose', 'modalOverlay'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', () => closeModal('productModal'));
+    });
+
+    ['checkoutModalClose', 'checkoutModalOverlay'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', () => closeModal('checkoutModal'));
+    });
+
+    ['ordersModalClose', 'ordersModalOverlay'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', () => closeModal('ordersModal'));
+    });
+
+    // View orders button
+    const viewOrdersFab = document.getElementById('viewOrdersFab');
+    if (viewOrdersFab) {
+        viewOrdersFab.addEventListener('click', showOrders);
+    }
+
+    const viewOrdersBtn = document.getElementById('viewOrdersBtn');
+    if (viewOrdersBtn) {
+        viewOrdersBtn.addEventListener('click', () => {
+            closeModal('confirmationModal');
+            showOrders();
+        });
+    }
+
+    const continueShoppingBtn = document.getElementById('continueShoppingBtn');
+    if (continueShoppingBtn) {
+        continueShoppingBtn.addEventListener('click', () => {
+            closeModal('confirmationModal');
+        });
+    }
+
+    // Update orders count
+    updateOrdersCount();
+});
+
+function handleOrderSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const orderData = {
+        id: 'ORD-' + Date.now(),
+        orderNumber: '#' + Math.random().toString(36).substr(2, 6).toUpperCase(),
+        customer: {
+            name: formData.get('customerName'),
+            phone: formData.get('customerPhone'),
+            address: formData.get('customerAddress')
+        },
+        items: cart.map(item => ({
+            id: item.id,
+            name: currentLanguage === 'ar' ? item.nameAr : item.name,
+            nameAr: item.nameAr,
+            nameEn: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            total: item.price * item.quantity
+        })),
+        notes: formData.get('orderNotes'),
+        paymentMethod: formData.get('paymentMethod'),
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        status: 'pending',
+        date: new Date().toISOString(),
+        dateFormatted: new Date().toLocaleString(currentLanguage === 'ar' ? 'ar-SA' : 'en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+
+    // Save to localStorage
+    let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    orders.unshift(orderData); // Add to beginning
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Clear cart
+    cart = [];
+    saveCart();
+    updateCartUI();
+
+    // Close checkout modal
+    closeModal('checkoutModal');
+
+    // Show confirmation
+    document.getElementById('confirmationOrderNumber').textContent = orderData.orderNumber;
+    document.getElementById('confirmationModal').classList.add('active');
+
+    // Update orders count
+    updateOrdersCount();
+
+    // Reset form
+    e.target.reset();
+}
+
+// ==================== SHOW ORDERS ====================
+function showOrders() {
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    const ordersContainer = document.getElementById('ordersContainer');
+
+    if (orders.length === 0) {
+        ordersContainer.innerHTML = `
+            <div class="empty-orders">
+                <i class="fas fa-receipt"></i>
+                <p>${currentLanguage === 'ar' ? 'لا توجد طلبات بعد' : 'No orders yet'}</p>
+            </div>
+        `;
+    } else {
+        ordersContainer.innerHTML = orders.map(order => `
+            <div class="order-card">
+                <div class="order-card-header">
+                    <div class="order-card-number">${order.orderNumber}</div>
+                    <div class="order-card-date">${order.dateFormatted}</div>
+                </div>
+
+                <div class="order-card-customer">
+                    <div class="order-card-customer-row">
+                        <i class="fas fa-user"></i>
+                        <span>${order.customer.name}</span>
+                    </div>
+                    <div class="order-card-customer-row">
+                        <i class="fas fa-phone"></i>
+                        <span>${order.customer.phone}</span>
+                    </div>
+                    <div class="order-card-customer-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${order.customer.address}</span>
+                    </div>
+                </div>
+
+                <div class="order-card-items">
+                    ${order.items.map(item => `
+                        <div class="order-card-item">
+                            <span class="order-card-item-name">${currentLanguage === 'ar' ? item.nameAr : item.nameEn}</span>
+                            <span class="order-card-item-quantity">× ${item.quantity}</span>
+                            <span class="order-card-item-price">${item.total.toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="order-card-footer">
+                    <div class="order-card-total">${currentLanguage === 'ar' ? 'الإجمالي:' : 'Total:'} ${order.total.toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}</div>
+                    <div class="order-card-status pending">${currentLanguage === 'ar' ? 'قيد المعالجة' : 'Pending'}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    document.getElementById('ordersModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateOrdersCount() {
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    const countEl = document.getElementById('ordersCount');
+    if (countEl) {
+        countEl.textContent = orders.length;
+        countEl.style.display = orders.length > 0 ? 'flex' : 'none';
+    }
+}
+
 // ==================== TOAST ====================
 function showToast(message, type = 'success') {
     const toastContainer = document.getElementById('toastContainer');
@@ -509,3 +783,7 @@ function showToast(message, type = 'success') {
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.updateQuantity = updateQuantity;
+window.showProductDetails = showProductDetails;
+window.changeProductQuantity = changeProductQuantity;
+window.addProductToCart = addProductToCart;
+window.closeModal = closeModal;
