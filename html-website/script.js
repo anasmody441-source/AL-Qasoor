@@ -278,7 +278,7 @@ function renderMenu() {
                 <p class="menu-item-description">${currentLanguage === 'ar' ? item.descriptionAr : item.description}</p>
                 <div class="menu-item-footer">
                     <span class="menu-item-price">${item.price.toFixed(2)} ${currentLanguage === 'ar' ? 'ر.س' : 'SAR'}</span>
-                    <button class="add-to-cart-btn" onclick="addToCart('${item.id}')">
+                    <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('${item.id}')">
                         <i class="fas fa-shopping-cart"></i>
                         ${currentLanguage === 'ar' ? 'إضافة' : 'Add'}
                     </button>
@@ -286,6 +286,12 @@ function renderMenu() {
             </div>
         </div>
     `).join('');
+
+    // Add click event to menu items
+    document.querySelectorAll('.menu-item').forEach((el, index) => {
+        el.style.cursor = 'pointer';
+        el.onclick = () => showProductDetails(filteredItems[index].id);
+    });
 }
 
 function updateCategoryFilter() {
