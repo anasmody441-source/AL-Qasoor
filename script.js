@@ -8,7 +8,7 @@ const menuItems = [
         descriptionAr: 'دجاج بروستد ذهبي مقرمش يقدم مع صلصة الثوم',
         price: 25.00,
         category: 'broasted',
-        image: 'https://images.pexels.com/photos/1600714/pexels-photo-1600714.jpeg',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\images.jpg',
         popular: true
     },
     {
@@ -41,7 +41,7 @@ const menuItems = [
         descriptionAr: 'حمص كريمي مغطى باللبن',
         price: 8.00,
         category: 'appetizers',
-        image: 'https://images.pexels.com/photos/29935507/pexels-photo-29935507.jpeg',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\76.jpg',
         popular: true
     },
     {
@@ -52,7 +52,7 @@ const menuItems = [
         descriptionAr: 'نقانق مشوية بالتوابل',
         price: 12.00,
         category: 'appetizers',
-        image: 'https://images.pexels.com/photos/4181567/pexels-photo-4181567.jpeg',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\33.jpg',
         popular: false
     },
     {
@@ -63,7 +63,7 @@ const menuItems = [
         descriptionAr: 'فلافل مقرمشة تقدم مع صلصة الطحينة',
         price: 10.00,
         category: 'appetizers',
-        image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\22.jpg',
         popular: true
     },
     {
@@ -74,7 +74,7 @@ const menuItems = [
         descriptionAr: 'أجنحة دجاج بروستد حارة',
         price: 18.00,
         category: 'broasted',
-        image: 'https://images.pexels.com/photos/32177596/pexels-photo-32177596.jpeg',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\71ad55c1d2d1d0b53964b7dc9b3f6c8a_w750_h750.jpg',
         popular: false
     },
     {
@@ -85,7 +85,7 @@ const menuItems = [
         descriptionAr: 'دجاج مشوي مع أرز وسلطة',
         price: 28.00,
         category: 'roasted',
-        image: 'https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg',
+        image: 'C:\\Users\\HP\\Desktop\\job\\alqasor\\alqasor images\\11.jpg',
         popular: true
     }
 ];
